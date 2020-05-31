@@ -1,1 +1,5 @@
 # code-quiz
+
+### Pseudo-code
+
+-
