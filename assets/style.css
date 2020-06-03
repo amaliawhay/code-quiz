@@ -1,9 +1,11 @@
-#countdown {
+#min {
   font-size: 32px;
+  float: left;
+  margin-left: 25%;
   text-align: center;
 }
 
-#seconds {
+#sec {
   font-size: 24px;
   float: left;
 }
