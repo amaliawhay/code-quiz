@@ -30,16 +30,27 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-6">
-          <h3 class="time"></h3>
+          Timer
+          <div><h3 class="time"></h3></div>
         </div>
       </div>
     </div>
+
+    <!--show score-->
+    <div>
+      <div id="heading">
+        <button class="btn btn-link" id="viewScore">
+          View Score
+        </button>
+      </div>
+    </div>
+
     <!--Main content section. This is where the intro & questions will show-->
-    <div class="row justify-content-center">
-      <div class="px-5 col">
-        <h3>Play the Code Quiz!</h3>
+    <main class="row justify-content-center">
+      <div class="px-5 col" id="landingContent">
+        <h2>Play the Code Quiz!</h2>
         <p>
-          Answer the following questions about coding in 5
+          Answer the following questions about coding in 2
           minutes or less. Be warned! If you guess
           incorrectly, you lose time on the clock!
         </p>
@@ -52,6 +63,61 @@
           Start
         </button>
       </div>
+    </main>
+
+    <!--High Score-->
+    <div id="highScore" style="display: none;">
+      <h1>High Score</h1>
+      <div>
+        <button class="btn btn-primary" id="home">
+          Back
+        </button>
+        <button class="btn btn-primary" id="clear">
+          Clear Score
+        </button>
+      </div>
+    </div>
+
+    <div id="questions" style="display: none;">
+      <h2 id="questionsTitle"></h2>
+      <br />
+      <button
+        class="btn btn-primary questionChoice"
+        id="choice1"
+      ></button>
+      <br />
+      <button
+        class="btn btn-primary questionChoice"
+        id="choice2"
+      ></button>
+      <br />
+      <button
+        class="btn btn-primary questionChoice"
+        id="choice3"
+      ></button>
+      <br />
+      <button
+        class="btn btn-primary questionChoice"
+        id="choice4"
+      ></button>
+      <div id="answerIndicator" style="display: none;">
+        <hr />
+        <p id="indicatorText"></p>
+      </div>
+    </div>
+
+    <div id="endingScore" style="display: none;">
+      <h2>You have finished</h2>
+      <p id="scoreText"></p>
+      <p>Enter your initials</p>
+      <input type="text" id="initials" />
+      <button
+        type="submit"
+        class="btn btn-primary"
+        id="submit"
+      >
+        Submit
+      </button>
     </div>
 
     <!--When the question is answered correctly, return correct, timer remains unchanged-->
@@ -64,6 +130,7 @@
 
     <!-- Optional JavaScript -->
     <script src="assets/script.js"></script>
+    <script src="assets/questions.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
