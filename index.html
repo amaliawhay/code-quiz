@@ -20,34 +20,17 @@
     <title>Code Quiz</title>
   </head>
   <body>
-    <!--This is the nav bar-->
-
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand">Code Quiz</a>
     </nav>
-
-    <!--row for timer in top right-->
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-6">
-          Timer
-          <div><h3 class="time"></h3></div>
-        </div>
+      <div class="row">
+        <div class="col-9"></div>
+        <div class="col-3" id="timer"></div>
       </div>
     </div>
-
-    <!--show score-->
-    <div>
-      <div id="heading">
-        <button class="btn btn-link" id="viewScore">
-          View Score
-        </button>
-      </div>
-    </div>
-
-    <!--Main content section. This is where the intro & questions will show-->
     <main class="row justify-content-center">
-      <div class="px-5 col" id="landingContent">
+      <div class="px-5 col" id="intro">
         <h2>Play the Code Quiz!</h2>
         <p>
           Answer the following questions about coding in 2
@@ -64,73 +47,66 @@
         </button>
       </div>
     </main>
-
-    <!--High Score-->
-    <div id="highScore" style="display: none;">
-      <h1>High Score</h1>
-      <div>
-        <button class="btn btn-primary" id="home">
-          Back
-        </button>
-        <button class="btn btn-primary" id="clear">
-          Clear Score
-        </button>
+    <div class="container" id="quiz" style="display: none;">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col" id="question">
+          <h2 id="questionsTitle"></h2>
+          <br />
+          <button
+            class="btn btn-primary questionChoice"
+            id="choice1"
+          ></button>
+          <br />
+          <button
+            class="btn btn-primary questionChoice"
+            id="choice2"
+          ></button>
+          <br />
+          <button
+            class="btn btn-primary questionChoice"
+            id="choice3"
+          ></button>
+          <br />
+          <button
+            class="btn btn-primary questionChoice"
+            id="choice4"
+          ></button>
+          <div id="answerIndicator" style="display: none;">
+            <hr />
+            <p id="answerCheck"></p>
+          </div>
+        </div>
+        <div class="col"></div>
       </div>
     </div>
-
-    <div id="questions" style="display: none;">
-      <h2 id="questionsTitle"></h2>
-      <br />
-      <button
-        class="btn btn-primary questionChoice"
-        id="choice1"
-      ></button>
-      <br />
-      <button
-        class="btn btn-primary questionChoice"
-        id="choice2"
-      ></button>
-      <br />
-      <button
-        class="btn btn-primary questionChoice"
-        id="choice3"
-      ></button>
-      <br />
-      <button
-        class="btn btn-primary questionChoice"
-        id="choice4"
-      ></button>
-      <div id="answerIndicator" style="display: none;">
-        <hr />
-        <p id="indicatorText"></p>
+    <div
+      class="container"
+      id="finalScore"
+      style="display: none;"
+    >
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <h2>You have finished</h2>
+          <p id="scoreText"></p>
+          <p>Enter your initials</p>
+          <input type="text" id="initials" />
+          <button
+            type="submit"
+            class="btn btn-primary"
+            id="submit"
+          >
+            Submit
+          </button>
+        </div>
+        <div class="col"></div>
       </div>
     </div>
-
-    <div id="endingScore" style="display: none;">
-      <h2>You have finished</h2>
-      <p id="scoreText"></p>
-      <p>Enter your initials</p>
-      <input type="text" id="initials" />
-      <button
-        type="submit"
-        class="btn btn-primary"
-        id="submit"
-      >
-        Submit
-      </button>
-    </div>
-
-    <!--When the question is answered correctly, return correct, timer remains unchanged-->
-    <!--When the question is answered incorrectly, return wrong answer, time is deducted from timer-->
-    <!--After returning question responses, the next question pops up and performs the same appropriate question response-->
-    <!--When the timer hits 0 the game ends-->
-    <!--When the user answers all the questions, the game also ends (whichever of these events occurs first ends the game-->
-    <!--At the end of the game, allow users to enter initials-->
-    <!--Store user's initials and score in a list-->
 
     <!-- Optional JavaScript -->
     <script src="assets/script.js"></script>
-    <script src="assets/questions.js"></script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
