@@ -46,10 +46,15 @@ var finalScoreEl = document.querySelector("#finalScore");
 var scoreTextEl = document.querySelector("#scoreText");
 var initialsEl = document.querySelector("#initials");
 var submitBtn = document.querySelector("#submit");
+
 var secLeft = 120;
+
+var time = 0;
+var index = 0;
+var StartTimer = 0;
 var score = 0;
 
-var userChoice = [];
+var userChoice = "";
 var scoreObj = {
   initials: "",
   score: 0,
@@ -57,6 +62,7 @@ var scoreObj = {
 
 var savedArray =
   JSON.parse(localStorage.getItem("highscore")) || [];
+
 var questions = [
   {
     q: "What are the 3 fundamental languages of the web?",
@@ -97,16 +103,32 @@ var questions = [
     a: "$",
   },
 ];
+
+console.log(questions);
+function getQuestions() {
+  console.log(questions);
+
+  for (var i = 0; i < questions.length; i++) {
+    var currentQ = questions[i];
+    console.log(currentQ);
+  }
+
+  //questionTitle.textContent = currentQ;
+}
 //These are the click events for start button
-startBtn.addEventListener("click", function () {
+startBtn.addEventListener("click", function (
+  event,
+  questions
+) {
+  event.preventDefault();
   timerEl.textContent = setTime();
   intro.style.display = "none";
-  questionTitle.textConent = getQuestions();
+  getQuestions(questions);
 });
 //These are the click events for each choice button
-choice1Btn.addEventListener(
+/*choice1Btn.addEventListener(
   "click",
-  userChoice.push(questions.c[0])
+  userChoice.textContent
 );
 choice2Btn.addEventListener(
   "click",
@@ -120,6 +142,7 @@ choice4Btn.addEventListener(
   "click",
   userChoice.push(questions.c[3])
 );
+*/
 //This will allow the user to store (locally) the final score with initials when the submit button is clicked
 submit.addEventListener("click", function () {
   scoreObj.initials = initials.value;
@@ -143,14 +166,6 @@ function setTime() {
   }, 1000);
 }
 //function to fill questions
-function getQuestions() {
-  {
-    for (var i = 0; i < questions.length; i++);
-    var currentQ = questions[i].q;
-  }
-
-  questionTitle.textContent = currentQ;
-}
 
 function getChoices() {
   var currentChoices = [];
