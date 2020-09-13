@@ -102,3 +102,15 @@ function displayQuestion(index) {
   headerText.setAttribute("style", "text-align: left");
   buttonSet.setAttribute("style", "text-align: left");
 }
+
+function nextQuestionCorrect() {
+  alert("Correct!");
+
+  currentQuestion++;
+  if (currentQuestion >= questions.length) {
+    quizDone = true;
+    displayHighScoreEntry();
+  } else {
+    displayQuestion(currentQuestion);
+  }
+}
