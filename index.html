@@ -19,93 +19,45 @@
 
     <title>Code Quiz</title>
   </head>
+
   <body>
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand">Code Quiz</a>
     </nav>
     <div class="container">
-      <div class="row">
-        <div class="col-9"></div>
-        <div class="col-3" id="timer"></div>
+      <div class="navbar">
+        <button
+          id="viewHighscoresBtn"
+          class="btn btn-primary"
+          style="text-align: left"
+        >
+          View Highscores
+        </button>
+        <div
+          id="timeDisplay"
+          style="text-align: right"
+        ></div>
       </div>
     </div>
-    <main class="row justify-content-center">
-      <div class="px-5 col" id="intro">
-        <h2>Play the Code Quiz!</h2>
-        <p>
-          Answer the following questions about coding in 2
-          minutes or less. Be warned! If you guess
-          incorrectly, you lose time on the clock!
-        </p>
-        <h4>Press start to play! Good luck!</h4>
+    <div class="container">
+      <h1 id="header-text">Play the Code Quiz!</h1>
+      <p id="opening-text">
+        Answer the following questions about coding in 2
+        minutes or less. Be warned! If you guess
+        incorrectly, you lose time on the clock!
+      </p>
+      <h4>Press start to play! Good luck!</h4>
+      <div id="button-set" style="text-align: center">
         <button
           type="button"
           class="btn btn-danger btn-lg"
-          id="start"
+          id="startButton"
         >
           Start
         </button>
       </div>
-    </main>
-    <div
-      class="container"
-      id="quiz"
-      style="display: block;"
-    >
-      <div class="row">
-        <div class="col"></div>
-        <div class="col" id="question">
-          <h2 id="questionsTitle"></h2>
-          <br />
-          <button
-            class="btn btn-primary questionChoice"
-            id="choice1"
-          ></button>
-          <br />
-          <button
-            class="btn btn-primary questionChoice"
-            id="choice2"
-          ></button>
-          <br />
-          <button
-            class="btn btn-primary questionChoice"
-            id="choice3"
-          ></button>
-          <br />
-          <button
-            class="btn btn-primary questionChoice"
-            id="choice4"
-          ></button>
-          <div id="answerIndicator" style="display: block;">
-            <hr />
-            <p id="answerCheck"></p>
-          </div>
-        </div>
-        <div class="col"></div>
-      </div>
-    </div>
-    <div
-      class="container"
-      id="finalScore"
-      style="display: block;"
-    >
-      <div class="row">
-        <div class="col"></div>
-        <div class="col">
-          <h2>You have finished</h2>
-          <p id="scoreText"></p>
-          <p>Enter your initials</p>
-          <input type="text" id="initials" />
-          <button
-            type="submit"
-            class="btn btn-primary"
-            id="submit"
-          >
-            Submit
-          </button>
-        </div>
-        <div class="col"></div>
-      </div>
+      <div class="input-group" id="highScoreForm"></div>
+      <div id="scoreboardDisplay"></div>
     </div>
 
     <!-- Optional JavaScript -->
