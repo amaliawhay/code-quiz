@@ -77,3 +77,28 @@ function displayStartPage() {
 }
 
 //---Populate questions start page-------------------------------------------------------
+function displayQuestion(index) {
+  clearScreen();
+  headerText.textContent = questions[index].q;
+
+  for (var i = 0; i < questions[index].c.length; i++) {
+    var newButton = document.createElement("button");
+    newButton.textContent = questions[index].c[i];
+    newButton.setAttribute("class", "btn btn-primary");
+    buttonSet.appendChild(newButton);
+    buttonSet.appendChild(document.createElement("br"));
+    if (questions[index].c[i] === questions[index].a) {
+      newButton.addEventListener(
+        "click",
+        nextQuestionCorrect
+      );
+    } else {
+      newButton.addEventListener(
+        "click",
+        nextQuestionWrong
+      );
+    }
+  }
+  headerText.setAttribute("style", "text-align: left");
+  buttonSet.setAttribute("style", "text-align: left");
+}
