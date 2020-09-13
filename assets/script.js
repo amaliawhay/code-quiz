@@ -114,3 +114,17 @@ function nextQuestionCorrect() {
     displayQuestion(currentQuestion);
   }
 }
+
+function nextQuestionWrong() {
+  alert(
+    "Incorrect! 15 seconds has been removed from the clock."
+  );
+  secondsRemaining -= 15;
+
+  currentQuestion++;
+  if (currentQuestion >= questions.length) {
+    quizDone = true;
+  } else {
+    displayQuestion(currentQuestion);
+  }
+}
