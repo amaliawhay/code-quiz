@@ -128,3 +128,33 @@ function nextQuestionWrong() {
     displayQuestion(currentQuestion);
   }
 }
+
+//---Timer functions----------------------------------------------------
+var secondsRemaining = 0;
+var interval;
+
+var timeDisplay = document.querySelector("#timeDisplay");
+
+function startTimer() {
+  setTimeout();
+
+  interval = setInterval(function () {
+    secondsRemaining--;
+    renderTime();
+  }, 1000);
+}
+
+function setTime() {
+  clearInterval(interval);
+  secondsRemaining = questions.length * 15;
+}
+
+function renderTime() {
+  timeDisplay.textContent = "Time: " + secondsRemaining;
+
+  if (quizDone == true || secondsRemaining <= 0) {
+    clearInterval(interval);
+    timeDisplay.textContent = "";
+    displayHighScoreEntry();
+  }
+}
