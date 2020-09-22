@@ -158,3 +158,128 @@ function renderTime() {
     displayHighScoreEntry();
   }
 }
+//---High Score functions----------------------------------------------------------
+var highScoreForm = document.querySelector(
+  "#highScoreForm"
+);
+highScoreForm.setAttribute("style", "text-align: left");
+
+var highScoreLabel = document.createElement("label");
+highScoreLabel.setAttribute("for", "initials");
+highScoreLabel.textContent = "Enter your initials: ";
+
+var highScoreTextEntry = document.createElement("input");
+highScoreTextEntry.setAttribute("type", "text");
+highScoreTextEntry.setAttribute("name", "initials");
+highScoreTextEntry.setAttribute("id", "initials");
+
+var highScoreSubmitBtn = document.createElement("button");
+highScoreSubmitBtn.setAttribute("class", "btn btn-primary");
+highScoreSubmitBtn.textContent = "Submit";
+highScoreSubmitBtn.addEventListener("click", addHighScore);
+
+var goBackBtn = document.createElement("button");
+goBackBtn.setAttribute("class", "btn btn-primary");
+goBackBtn.textContent = "Go Back";
+goBackBtn.addEventListener("click", displayStartPage);
+
+var clearHighScoresBtn = document.createElement("button");
+clearHighScoresBtn.setAttribute("class", "btn btn-primary");
+clearHighScoresBtn.textContent = "Clear High Scores";
+clearHighScoresBtn.addEventListener(
+  "click",
+  clearHighScores
+);
+
+localStorage.setItem("scoreboard", JSON.stringify([]));
+
+var scoreboardDisplay = document.querySelector(
+  "#scoreboardDisplay"
+);
+
+function displayHighScoreEntry() {
+  clearScreen();
+
+  headerText.textContent = "You have completed the quiz!";
+  openingText.textContent =
+    "Your final score is " + secondsRemaining;
+  openingText.setAttribute("style", "text-align: left");
+
+  highScoreForm.appendChild(highScoreLabel);
+  highScoreForm.appendChild(highScoreTextEntry);
+  highScoreTextEntry.value = "";
+  highScoreForm.appendChild(highScoreSubmitBtn);
+}
+
+function addHighScore() {
+  var initials = highScoreTextEntry.value;
+  var score = secondsRemaining;
+
+  var scoreboard = JSON.parse(
+    localStorage.getItem("scoreboard")
+  );
+  scoreboard.push(highScore);
+
+  localStorage.setItem(
+    "scoreboard",
+    JSON.stringify(scoreboard)
+  );
+
+  displayHighScores();
+}
+
+function displayHighScores() {
+  clearScreen();
+
+  quizDone = true;
+
+  headerText.textContent = "High Scores";
+
+  sortHighScores();
+
+  var scoreboard = JSON.parse(
+    localStorage.getItem("scoreboard")
+  );
+  for (var i = 0; i < scoreboard.length; i++) {
+    var newScore = document.createElement("div");
+    newScore.textContent =
+      "" +
+      (i + 1) +
+      ". " +
+      scoreboard[i].myInitials +
+      " - " +
+      scoreboard[i].myScore;
+    var divider = document.createElement("hr");
+    scoreboardDisplay.appendChild(newScore);
+    scoreboardDisplay.appendChild(divider);
+  }
+  scoreboardDisplay.appendChild(goBackBtn);
+  scoreboardDisplay.appendChild(clearHighScoresBtn);
+}
+
+function sortHighScores() {
+  var scoreboard = JSON.parse(
+    localStorage.getItem("scoreboard")
+  );
+  for (var i = 0; i < scoreboard.length; i++) {
+    for (var j = i + 1; j < scoreboard.length; j++) {
+      if (scoreboard[j].myScore > scoreboard[i].myScore) {
+        var temp = scoreboard[i];
+        scoreboard[i] = scoreboard[j];
+        scoreboard[j] = temp;
+      }
+    }
+  }
+  localStorage.setItem(
+    "scoreboard",
+    JSON.stringify(scoreboard)
+  );
+}
+
+function clearHighScores() {
+  localStorage.clear();
+  localStorage.setItem("scoreboard", JSON.stringify([]));
+  displayHighScores();
+}
+
+//---General functions--------------------------------------------
