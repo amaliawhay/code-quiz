@@ -53,7 +53,7 @@ startButton.addEventListener("click", startQuiz);
 function startQuiz() {
   startTimer();
   clearScreen();
-  currentWuestion = 0;
+  currentQuestion = 0;
   quizDone = false;
   displayQuestion(currentQuestion);
 }
@@ -80,6 +80,7 @@ function displayStartPage() {
 function displayQuestion(index) {
   clearScreen();
   headerText.textContent = questions[index].q;
+  console.log(questions[index].q);
 
   for (var i = 0; i < questions[index].c.length; i++) {
     var newButton = document.createElement("button");
@@ -136,7 +137,7 @@ var interval;
 var timeDisplay = document.querySelector("#timeDisplay");
 
 function startTimer() {
-  setTimeout();
+  setTime();
 
   interval = setInterval(function () {
     secondsRemaining--;
@@ -215,6 +216,11 @@ function addHighScore() {
   var initials = highScoreTextEntry.value;
   var score = secondsRemaining;
 
+  var highScore = {
+    myInitials: initials,
+    myScore: score,
+  };
+
   var scoreboard = JSON.parse(
     localStorage.getItem("scoreboard")
   );
@@ -283,3 +289,20 @@ function clearHighScores() {
 }
 
 //---General functions--------------------------------------------
+
+var viewHighScoresBtn = document.querySelector(
+  "#viewHighScoresBtn"
+);
+viewHighScoresBtn.textContent = "View Highscores";
+viewHighScoresBtn.addEventListener(
+  "click",
+  displayHighScores
+);
+
+function clearScreen() {
+  headerText.textContent = "";
+  openingText.textContent = "";
+  buttonSet.innerHTML = "";
+  highScoreForm.innerHTML = "";
+  scoreboardDisplay.innerHTML = "";
+}
